@@ -2,7 +2,7 @@
 
 # Converts Euro into another currency.
 
-    convert(x::Number, currency::String)
+    cconvert(x::Number, currency::String)
 
 ## Arguments
 
@@ -12,15 +12,15 @@
 ## Examples
 
 ```jldoctest
-julia> convert(100, "USD")
-julia> convert(10, "CAD")
-julia> convert(1, "ASD")
+julia> cconvert(100, "USD")
+julia> cconvert(10, "CAD")
+julia> cconvert(1, "ASD")
 julia>
 julia> x = rand(100)
-julia> convert.(x, "CAD")
+julia> cconvert.(x, "CAD")
 ```
 """
-function convert(x::Number, symbol::String = "")
+function cconvert(x::Number, symbol::String = "")
   
   url = "https://api.exchangeratesapi.io/"
   url *= "latest/"

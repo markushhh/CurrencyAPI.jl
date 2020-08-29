@@ -41,7 +41,7 @@ plot(x2)
 convert Euros into another currency.
 
 ```@julia
-convert(100, "CAD")
+cconvert(100, "CAD")
 ```
 ```
 144.98

@@ -20,14 +20,17 @@ julia> x = rand(100)
 julia> convert.(x, "CAD")
 ```
 """
-function cconvert(x::Number, symbol::String = "")
-  url_base = "https://api.exchangeratesapi.io/"
-  url = url_base * "latest/"
+function convert(x::Number, symbol::String = "")
+  
+  url = "https://api.exchangeratesapi.io/"
+  url *= "latest/"
   response = HTTP.get(url, cookies = true)
   body = JSON.parse(String(response.body))
+  
   if symbol ∉ keys(body["rates"])
-      error("Currency is not yet supported")
+      error("Currency '$symbol' is not yet supported")
   end
-  x = x * body["rates"][symbol]
-  return(x)
+  
+  x *= body["rates"][symbol]
+  return x
 end
